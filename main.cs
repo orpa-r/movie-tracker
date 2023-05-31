@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 
 //this template was everywhere and i don't quite fully get why...
-
 namespace MovieTrackerApp { //app name??
+
     class Program {
         // enumeration: new word!! never learnt this at alevel - kind of a special class that represents a choice
         public enum MovieCategory {
@@ -11,7 +11,7 @@ namespace MovieTrackerApp { //app name??
             WantToWatch
         }
 
-        public class Movie {
+        public class Movie { // getters n setters in c#?? interesting...
             public string Title { get; set; }
             public int ReleaseYear { get; set; }
             public string AgeRating { get; set; }
@@ -19,12 +19,40 @@ namespace MovieTrackerApp { //app name??
             public MovieCategory Category { get; set; }
         }
 
+        public static class MovieTrackerApp {
+            // to add a new movie
+            public void AddNewMovie(string title, int releaseYear, string ageRating, double rating, MovieCategory Category) {
+                Movie movie = new Movie {
+                    Title = title,
+                    ReleaseYear = releaseYear,
+                    AgeRating = ageRating,
+                    Rating = rating,
+                    Category = category
+                };
+                movies.Add(movie);
+            }
 
-        static void Main(string[] args) {
+            // to add a movie to watched
+            public void AddToWatched(string title) {
+                Movie movie = FindMovie(title);
+                if (movie != null) { 
+                    movie.Category = MovieCategory.Watched;
+                } else {
+                    Console.WriteLine("Not found...");
+                }
+            }
 
+            public void RateMovie(string title, double rating) {
+                Movie movie = FindMovie(title);
+                if (movie != null && movie.Category == MovieCategory.Watched) {
+                    Console.Write =("How was it? Give it a rating out of 5 Stars:");
+                    rating = Console.ReadLine();
+                    movie.Rating = rating; // not sure if this can be done more simpler...
+                } else {
+                    Console.WriteLine("Not found or haven't watched yet...");
+                }
+            }
         }
-
-
 
     }
 }
