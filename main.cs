@@ -58,10 +58,10 @@ namespace MovieTrackerApp { //app name??
                     Console.WriteLine("Not found...");
                 }
             }
-
+            // method to rate a movie
             public void RateMovie(string title, double rating) {
                 Movie movie = FindMovie(title); // calls find movie
-                if (movie != null && movie.Category == MovieCategory.Watched) {
+                if (movie != null && movie.Category == MovieCategory.Watched) { // checks if the movie has been watched first or else you cant rate it
                     Console.Write =("How was it? Give it a rating out of 5 Stars:");
                     rating = Console.ReadLine();
                     movie.Rating = rating; // not sure if this can be done more simpler...
@@ -69,22 +69,29 @@ namespace MovieTrackerApp { //app name??
                     Console.WriteLine("Not found or haven't watched yet...");
                 }
             }
-
-            public void PrintAllMovies() {
-                for (Movie movie in movies) {
-                    Console.WriteLine($"Title: {movie.Title}");
-                    Console.WriteLine($"Release: {movie.ReleaseYear}");
-                    Console.WriteLine($"Age Rating: {movie.AgeRating}");
-                    Console.WriteLine($"Genre: {movie.Genre}");
-                    Console.WriteLine($"Language: {movie.Language}");
-
-                    if (movie.Catergory = Watched) {
+            // to print all the movies watched or not watched...
+            public void PrintAllWatchedMovies(MovieCategory category) {
+                if (catergory = Watched) {
+                    foreach (Movie movie in movies where movie.Category = MovieCategory.Watched) {
+                        Console.WriteLine($"Title: {movie.Title}");
+                        Console.WriteLine($"Release: {movie.ReleaseYear}");
+                        Console.WriteLine($"Age Rating: {movie.AgeRating}");
+                        Console.WriteLine($"Genre: {movie.Genre}");
+                        Console.WriteLine($"Language: {movie.Language}");
                         Console.WriteLine($"User Rated: {movie.Rating}");
-                    } else {
-                        null;
                     }
+                } if else (category = WantToWatch) {
+                    foreach (Movie movie in movies where movie.Category = MovieCategory.WantToWatch) {
+                        Console.WriteLine($"Title: {movie.Title}");
+                        Console.WriteLine($"Release: {movie.ReleaseYear}");
+                        Console.WriteLine($"Age Rating: {movie.AgeRating}");
+                        Console.WriteLine($"Genre: {movie.Genre}");
+                        Console.WriteLine($"Language: {movie.Language}");
+                    }
+                } else {
+                    Console.WriteLine("Not found...");
                 }
-            }
+            } 
 
         }
 
