@@ -30,7 +30,7 @@ namespace MovieTrackerApp { //app name??
         }
 
             // method to create and add a new movie
-            public void AddNewMovie(string title, int releaseYear, int ageRating, string genre, string language, double rating, MovieCategory Category) {
+            public void AddNewMovie(string title, int releaseYear, int ageRating, string genre, string language, double rating, MovieCategory category) {
                 Movie movie = new Movie {
                     Title = title,
                     ReleaseYear = releaseYear,
@@ -67,6 +67,22 @@ namespace MovieTrackerApp { //app name??
                     movie.Rating = rating; // not sure if this can be done more simpler...
                 } else {
                     Console.WriteLine("Not found or haven't watched yet...");
+                }
+            }
+
+            public void PrintAllMovies() {
+                for (Movie movie in movies) {
+                    Console.WriteLine($"Title: {movie.Title}");
+                    Console.WriteLine($"Release: {movie.ReleaseYear}");
+                    Console.WriteLine($"Age Rating: {movie.AgeRating}");
+                    Console.WriteLine($"Genre: {movie.Genre}");
+                    Console.WriteLine($"Language: {movie.Language}");
+
+                    if (movie.Catergory = Watched) {
+                        Console.WriteLine($"User Rated: {movie.Rating}");
+                    } else {
+                        null;
+                    }
                 }
             }
 
